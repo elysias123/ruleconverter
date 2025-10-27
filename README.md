@@ -7,16 +7,17 @@ http://127.0.0.1:8081/rule?target=mihomo&origin=adblock&url=https://easylist-dow
 
 将adblock语法的规则转换为mihomo domain格式的分流规则
 
-target(目标规则)支持的类型:
 
-- mihomo / mihomo_domain
-- mihomo_mrs
-- surge / surge_module
-- surge_ruleset
+#### target(目标规则)支持类型
 
-origin(来源规则)支持的参数:
-- adblock / adguard
-- hosts
+| 类型    | 作为源类型 | 作为目标类型 | 参数 |
+| ------ | :---: | :----: | ------ |
+| adblock / adguard |   ✓   |   ×   | adblock |
+| hosts |   ✓   |    ×   | hosts |
+| mihomo domain格式 |  ×  |  ✓   | mihomo / mihomo_domain |
+| surge module 格式 |   ×   |    ✓   | surge / surge_module |
+| surge ruleset 格式 |   ✓   |    ✓   | surge_ruleset |
+
 
 ### build
 
