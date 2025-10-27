@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func AdblockRuleConvert(content []string) []string {
+func OriginAdblockRule(content []string) []string {
 	var domains []string
 	seen := make(map[string]struct{})
 

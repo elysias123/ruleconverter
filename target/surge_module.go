@@ -2,7 +2,7 @@ package target
 
 import "strings"
 
-func SurgeModuleConvert(content []string) []string {
+func TargetSurgeModule(content []string) []string {
 
 	var list []string
 	list = append(list, "[Rule]")

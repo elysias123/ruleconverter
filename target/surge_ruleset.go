@@ -2,7 +2,7 @@ package target
 
 import "strings"
 
-func SurgeRulesetConvert(content []string) []string {
+func TargetSurgeRuleset(content []string) []string {
 
 	var list []string
 	for _, line := range content {

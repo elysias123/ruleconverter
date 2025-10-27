@@ -3,17 +3,17 @@ package target
 func ParseRuleTarget(content []string, target string) []string {
 	switch target {
 	case "mihomo":
-		return MihomoDomainConvert(content)
+		return TargetMihomoDomain(content)
 	case "mihomo_domain":
-		return MihomoDomainConvert(content)
+		return TargetMihomoDomain(content)
 	case "mihomo_mrs":
-		return MihomoMrsConvert(content)
+		return TargetMihomoMrs(content)
 	case "surge":
-		return SurgeModuleConvert(content)
+		return TargetSurgeModule(content)
 	case "surge_module":
-		return SurgeModuleConvert(content)
+		return TargetSurgeModule(content)
 	case "surge_ruleset":
-		return SurgeRulesetConvert(content)
+		return TargetSurgeRuleset(content)
 	default:
 		return []string{"nil"}
 	}

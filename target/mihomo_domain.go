@@ -2,7 +2,7 @@ package target
 
 import "strings"
 
-func MihomoDomainConvert(content []string) []string {
+func TargetMihomoDomain(content []string) []string {
 
 	var list []string
 	list = append(list, "payload:")

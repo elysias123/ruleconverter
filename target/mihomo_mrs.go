@@ -8,8 +8,8 @@ import (
 	rulesprovider "github.com/metacubex/mihomo/rules/provider"
 )
 
-func MihomoMrsConvert(content []string) []string {
-	domain := MihomoDomainConvert(content)
+func TargetMihomoMrs(content []string) []string {
+	domain := TargetMihomoDomain(content)
 
 	var buf bytes.Buffer
 	err := rulesprovider.ConvertToMrs(

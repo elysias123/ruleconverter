@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func HostsRuleConvert(content []string) []string {
+func OriginHostsRule(content []string) []string {
 	var domains []string
 	seen := make(map[string]struct{})
 
