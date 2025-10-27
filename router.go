@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -17,6 +18,10 @@ func SetupRouter(r *gin.Engine) {
 }
 
 func converter(c *gin.Context) {
+	var err error
+	var rule []string
+	var Ruleslist []string
+
 	target := c.Query("target")
 	origin := c.Query("origin")
 	url := c.Query("url")
@@ -33,13 +38,32 @@ func converter(c *gin.Context) {
 		c.String(400, "Missing required query parameters: origin")
 		return
 	}
-	rule := GetUrlContent(url)
-	if rule == nil {
-		c.String(400, "Failed to fetch rules from origin URL")
-		return
+
+	if !strings.Contains(url, ",") {
+		Ruleslist, err = GetUrlContent(url)
+		if err != nil {
+			c.String(400, "origin URL: %s fetch failed: %v", url, err)
+			log.Panicf("origin URL: %s fetch failed: %v", url, err)
+			return
+		}
+	} else {
+		urls := strings.Split(url, ",")
+		if len(urls) == 0 {
+			c.String(400, "origin URL parse failed")
+			return
+		}
+		for _, u := range urls {
+			rule, err = GetUrlContent(u)
+			if err != nil {
+				c.String(400, "origin URL: %s fetch failed", u)
+				log.Panicf("origin URL: %s fetch failed: %v", u, err)
+				continue
+			}
+			Ruleslist = append(Ruleslist, rule...)
+		}
 	}
 
-	ret := RuleConverter(rule, origin, target)
+	ret := RuleConverter(Ruleslist, origin, target)
 	if ret == nil {
 		c.String(400, "Failed to convert rules")
 		return

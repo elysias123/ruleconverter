@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -30,10 +31,11 @@ func main() {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
+	log.SetPrefix("[ruleconverter] ")
 	r := gin.Default()
 	SetupRouter(r)
 
-	fmt.Printf("ruleconverter is running...\n")
-	fmt.Printf("Listen: http://localhost:%s\n", port)
+	log.Printf("ruleconverter is running...\n")
+	log.Printf("Listen: http://localhost:%s\n", port)
 	r.Run(fmt.Sprintf(":%s", port))
 }
