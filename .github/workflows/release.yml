@@ -54,11 +54,11 @@ jobs:
 
     - name: Build windows-amd64
       run: |
-        make build GOOS=windows GOARCH=amd64 NAME=ruleconverter-windows-amd64
+        make build GOOS=windows GOARCH=amd64 NAME=ruleconverter-windows-amd64.exe
 
     - name: Build windows-arm64
       run: |
-        make build GOOS=windows GOARCH=arm64 NAME=ruleconverter-windows-arm64
+        make build GOOS=windows GOARCH=arm64 NAME=ruleconverter-windows-arm64.exe
 
     - name: Build darwin-amd64
       run: |
@@ -71,6 +71,7 @@ jobs:
     - name: Archive artifacts
       run: |
         cd out
+        ls
         for file in ruleconverter-*; do
           if [ -f "$file" ]; then
             tar -czf "$file.tar.gz" "$file"
