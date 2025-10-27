@@ -11,6 +11,8 @@ target(目标规则)支持的类型:
 
 - mihomo / mihomo_domain
 - mihomo_mrs
+- surge / surge_module
+- surge_ruleset
 
 origin(来源规则)支持的参数:
 - adblock / adguard
