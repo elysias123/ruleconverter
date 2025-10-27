@@ -34,5 +34,6 @@ func main() {
 	SetupRouter(r)
 
 	fmt.Printf("ruleconverter is running...\n")
+	fmt.Printf("Listen: http://localhost:%s\n", port)
 	r.Run(fmt.Sprintf(":%s", port))
 }
