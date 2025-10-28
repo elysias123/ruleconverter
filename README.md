@@ -16,7 +16,7 @@ http://127.0.0.1:8081/rule?target=mihomo&origin=adblock&url=https://easylist-dow
 | hosts |   ✓   |    ×   | hosts |
 | mihomo domain格式 |  ×  |  ✓   | mihomo / mihomo_domain |
 | surge module 格式 |   ×   |    ✓   | surge / surge_module |
-| surge ruleset 格式 |   ✓   |    ✓   | surge_ruleset |
+| surge ruleset 格式 |   ×   |    ✓   | surge_ruleset |
 
 
 ### build
