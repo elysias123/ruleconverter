@@ -18,6 +18,7 @@ http://127.0.0.1:8081/rule?target=mihomo&origin=adblock&url=https://easylist-dow
 | surge module 格式 |   ×   |    ✓   | surge / surge_module |
 | surge ruleset 格式 |   ×   |    ✓   | surge_ruleset |
 
+> 支持导入多个url链接(使用,隔开) 并且会进行去重
 
 ### build
 
