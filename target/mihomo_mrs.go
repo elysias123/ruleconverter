@@ -2,6 +2,7 @@ package target
 
 import (
 	"bytes"
+	"log"
 	"strings"
 
 	ruleprovider "github.com/metacubex/mihomo/constant/provider"
@@ -19,7 +20,8 @@ func TargetMihomoMrs(content []string) []string {
 		&buf,
 	)
 	if err != nil {
-		panic(err)
+		log.Printf("ConvertToMrs failed: %v", err)
+		return nil
 	}
 
 	out := strings.Split(buf.String(), "\n")
