@@ -16,8 +16,9 @@ http://127.0.0.1:8081/rule?target=mihomo&origin=adblock&url=https://easylist-dow
 | hosts |   ✓   |    ×   | hosts |
 | mihomo domain格式 |  ×  |  ✓   | mihomo / mihomo_domain |
 | surge module 格式 |   ×   |    ✓   | surge / surge_module |
-| surge ruleset 格式 |   ✓   |    ✓   | surge_ruleset |
+| surge ruleset 格式 |   ×   |    ✓   | surge_ruleset |
 
+> 支持导入多个url链接(使用,隔开) 并且会进行去重
 
 ### build
 
@@ -29,6 +30,12 @@ make
 ```shell
 make GOOS=android GOARCH=arm64 CC=<ndk工具链clang路径>
 ```
+
+### 或者前往[release](https://github.com/elysias123/ruleconverter/releases)直接下载编译好的可执行文件运行
+
+---
+
+### 如何运行
 
 默认在30000端口上运行:
 ```shell
@@ -42,3 +49,5 @@ cd frontend
 pnpm install
 pnpm run build
 ```
+在Linux等系统上建议使用systemd服务在后台持久化运行
+
