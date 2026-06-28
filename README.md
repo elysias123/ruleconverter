@@ -30,8 +30,15 @@ make
 ```shell
 make GOOS=android GOARCH=arm64 CC=<ndk工具链clang路径>
 ```
+> 或者前往[release](https://github.com/elysias123/ruleconverter/releases)直接下载编译好的可执行文件运行
 
-### 或者前往[release](https://github.com/elysias123/ruleconverter/releases)直接下载编译好的可执行文件运行
+前端:
+```shell
+cd frontend
+pnpm install
+pnpm run build
+```
+
 
 ---
 
@@ -41,13 +48,6 @@ make GOOS=android GOARCH=arm64 CC=<ndk工具链clang路径>
 ```shell
 chmod +x out/ruleconverter
 out/ruleconverter --port 30000
-```
-
-前端:
-```shell
-cd frontend
-pnpm install
-pnpm run build
 ```
 在Linux等系统上建议使用systemd服务在后台持久化运行
 
