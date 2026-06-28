@@ -1,2 +1,5 @@
 ruleconverter
 out/*
+node_modules
+frontend/dist
+web

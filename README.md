@@ -30,8 +30,15 @@ make
 make GOOS=android GOARCH=arm64 CC=<ndk工具链clang路径>
 ```
 
-在8081端口上运行:
+默认在30000端口上运行:
 ```shell
-chmod +x out/subconverter
-out/subconverter --port 8081
+chmod +x out/ruleconverter
+out/ruleconverter --port 30000
+```
+
+前端:
+```shell
+cd frontend
+pnpm install
+pnpm run build
 ```

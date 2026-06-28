@@ -10,20 +10,21 @@ import (
 )
 
 var (
-	port  string
-	debug bool
+	port       string
+	listenAddr string
+	debug      bool
 )
 
 func main() {
 
-	flag.StringVar(&port, "port", os.Getenv("RULCONVERTER_PORT"), "Port to run the server on")
+	defaultPort := os.Getenv("RULCONVERTER_PORT")
+	if defaultPort == "" {
+		defaultPort = "30000"
+	}
+	flag.StringVar(&port, "port", defaultPort, "Port to run the server on")
+	flag.StringVar(&listenAddr, "listen", "0.0.0.0", "Address to listen on")
 	flag.BoolVar(&debug, "debug", false, "Enable debug mode")
 	flag.Parse()
-
-	if port == "" {
-		fmt.Printf("Port must be specified either via --port flag or RULCONVERTER_PORT environment variable")
-		os.Exit(1)
-	}
 
 	if debug {
 		gin.SetMode(gin.DebugMode)
@@ -36,6 +37,6 @@ func main() {
 	SetupRouter(r)
 
 	log.Printf("ruleconverter is running...\n")
-	log.Printf("Listen: http://localhost:%s\n", port)
-	r.Run(fmt.Sprintf(":%s", port))
+	log.Printf("Listen: http://%s:%s\n", listenAddr, port)
+	r.Run(fmt.Sprintf("%s:%s", listenAddr, port))
 }

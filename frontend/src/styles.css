@@ -1,0 +1,104 @@
+:root {
+  /* 玻璃拟态卡片：半透明白 + 模糊，让 RGB 背景光效透出，白字 */
+  --card-bg: rgba(255, 255, 255, 0.12);
+  --card-border: rgba(255, 255, 255, 0.28);
+  --text: #f2f3f5;
+  --label: #e6e8ec;
+  --field-bg: rgba(255, 255, 255, 0.14);
+  --field-border: rgba(255, 255, 255, 0.3);
+  --field-text: #ffffff;
+  --placeholder: rgba(255, 255, 255, 0.6);
+  --header-bg: rgba(255, 255, 255, 0.16);
+  --divider: rgba(255, 255, 255, 0.25);
+  --blur: 18px;
+}
+html[data-theme="dark"] {
+  --card-bg: rgba(20, 24, 33, 0.45);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --text: #e6e6e6;
+  --label: #c2c8d2;
+  --field-bg: rgba(255, 255, 255, 0.06);
+  --field-border: rgba(255, 255, 255, 0.14);
+  --field-text: #f0f1f4;
+  --placeholder: rgba(255, 255, 255, 0.4);
+  --header-bg: rgba(255, 255, 255, 0.08);
+  --divider: rgba(255, 255, 255, 0.12);
+  --blur: 20px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  position: relative;
+  /* RGB 动态背景：流动的多彩线性渐变 */
+  background: linear-gradient(
+    120deg,
+    #ff0066,
+    #ff8c00,
+    #ffd500,
+    #00e676,
+    #00b8ff,
+    #7c4dff,
+    #ff0066
+  );
+  background-size: 400% 400%;
+  animation: bgShift 18s ease infinite;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+@keyframes bgShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* RGB 动态光效：多个彩色光团缓慢漂移并整体旋转色相 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -30vmax;
+  z-index: -2;
+  background:
+    radial-gradient(40vmax 40vmax at 20% 25%, rgba(255, 0, 90, 0.55), transparent 60%),
+    radial-gradient(38vmax 38vmax at 80% 20%, rgba(0, 170, 255, 0.5), transparent 60%),
+    radial-gradient(42vmax 42vmax at 75% 80%, rgba(120, 0, 255, 0.5), transparent 60%),
+    radial-gradient(38vmax 38vmax at 25% 78%, rgba(0, 255, 160, 0.5), transparent 60%),
+    radial-gradient(34vmax 34vmax at 50% 50%, rgba(255, 200, 0, 0.45), transparent 60%);
+  filter: blur(40px) saturate(1.3);
+  animation: rgbDrift 24s ease-in-out infinite alternate,
+    hueRotate 18s linear infinite;
+  will-change: transform, filter;
+}
+/* 叠加一层暗角，增强卡片可读性 */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(120% 120% at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.45));
+  pointer-events: none;
+}
+
+@keyframes rgbDrift {
+  0%   { transform: translate3d(-4%, -3%, 0) scale(1.05) rotate(0deg); }
+  50%  { transform: translate3d(3%, 4%, 0) scale(1.15) rotate(8deg); }
+  100% { transform: translate3d(4%, -2%, 0) scale(1.08) rotate(-6deg); }
+}
+@keyframes hueRotate {
+  from { filter: blur(40px) saturate(1.3) hue-rotate(0deg); }
+  to   { filter: blur(40px) saturate(1.3) hue-rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none; }
+  body::before { animation: none; }
+}
+
+#app { width: 100%; display: flex; justify-content: center; }
