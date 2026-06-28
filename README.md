@@ -3,7 +3,7 @@
 本项目类似subconverter 不过ruleconverter是针对分流规则的转换 而不是整个配置文件
 
 使用例子：
-http://127.0.0.1:8081/rule?target=mihomo&origin=adblock&url=https://easylist-downloads.adblockplus.org/easylistchina.txt
+http://127.0.0.1:30000/rule?target=mihomo&origin=adblock&url=https://easylist-downloads.adblockplus.org/easylistchina.txt
 
 将adblock语法的规则转换为mihomo domain格式的分流规则
 
